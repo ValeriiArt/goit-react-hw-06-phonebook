@@ -11,10 +11,10 @@ export default function ContactForm() {
   const numberInputId = nanoid(4);
 
   const dispatch = useDispatch();
-
+ 
+  
   const handleInput = e => {
-    const { name, value } = e.currentTarget;
-        
+    const { name, value } = e.currentTarget;    
     switch (name) {
       case 'name':
         setName(value);
@@ -27,12 +27,18 @@ export default function ContactForm() {
     }; 
   };
   
-   const handleSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({
+      id: nanoid(4),
+      name,
+      number
+    }));
     setName('');
     setNumber('');
-  };
+  };     
+
 
   return (
     <div className={s.form }>
